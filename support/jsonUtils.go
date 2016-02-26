@@ -29,3 +29,14 @@ func LoadJSONToConfigFile(r io.Reader) (ConfigFile, error) {
 
 	return m, err
 }
+
+// LoadJSONToUser loads informations about the bot, provided from telegram, and
+// returns a User
+func LoadJSONToUser(r io.ReadCloser) (User, error) {
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(r)
+
+	var m BotInfo
+	err := json.Unmarshal(buf.Bytes(), &m)
+	return m.Result, err
+}
