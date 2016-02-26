@@ -6,6 +6,26 @@ This bot is still a work-in-progress, changes will be made, and currently doesn'
 
 In the meantime, let me introduce you the configuration method.
 
+### Installation
+
+```shell
+# get the source code
+$ go get github.com/gsora/sysinfobot
+
+# get the dependencies
+$ go get github.com/fatih/structs
+
+# build and install  
+$ go build github.com/gsora/sysinfobot
+$ go install github.com/gsora/sysinfobot
+
+# ...write your configuration file and...
+# ...run!
+$ sysinfobot
+```
+
+These instructions assume you've correctly [installed and configured](https://golang.org/doc/install) a **Golang** environment.
+
 ### Configuration
 
 You need to provide a valid JSON configuration file in `~/.config/sysinfobot.json`, or the bot will not operate.
