@@ -17,8 +17,13 @@ func main() {
 	baseURL := "https://api.telegram.org/bot" + conf.BotToken + "/"
 
 	//declare eventHook for method messageUpdate
-	fmt.Println(conf.URL + ":" + conf.Port + "/" + conf.Endpoint)
 	_, err = http.PostForm(baseURL+"setWebhook", url.Values{"url": {conf.URL + ":" + conf.Port + "/" + conf.Endpoint}})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("--> Starting sysinfobot")
+	err = support.PrintBotInformations(conf.BotToken)
 	if err != nil {
 		log.Fatal(err)
 	}
