@@ -1,12 +1,14 @@
 {
-    "cert_path": "top",
-    "key_path": "lel",
-    "url": "url",
-    "endpoint": "endpoint",
-    "bot_token": "token",
-    "port": "8443",
+    "cert_path": "web server certificate",
+    "key_path": "web server key",
+    "url": "your server url, needs https://",
+    "endpoint": "an endpoint to let telegram push new messages",
+    "bot_token": "bot token",
+    "port": "http port, telegram only allows 80, 88, 443, 8443",
     "authorized_users": [
         "list",
-        "yolo"
+        "with",
+        "autorized",
+        "users"
     ]
 }
