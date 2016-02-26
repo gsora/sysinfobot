@@ -10,10 +10,12 @@ import (
 )
 
 var baseURL = ""
+var conf support.ConfigFile
+var err error
 
 func main() {
 	// check for presence and correctness of the configuration file
-	conf, err := support.CheckConfigFile()
+	conf, err = support.CheckConfigFile()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -42,16 +44,26 @@ func main() {
 func endpointHandler(w http.ResponseWriter, r *http.Request) {
 	data := support.LoadJSONToTelegramObject(r.Body)
 	echoText := data.Message.Text
-	refChat := data.Message.Chat.ID
-	sendMessage(strconv.Itoa(refChat), echoText)
+	secureSendMessage(data, echoText)
 
 }
 
-// simple function to send a message back to its chat
-func sendMessage(chatID string, text string) {
+// simple function to send a message back to its chat, and check for security
+func secureSendMessage(tObj support.TelegramObject, text string) {
+
+	recipient := tObj.Message.From.Username
+
 	params := url.Values{}
-	params.Set("chat_id", chatID)
-	params.Set("text", text)
+	params.Set("chat_id", strconv.Itoa(tObj.Message.Chat.ID))
+	params.Set("text", "Not authorized.")
+
+	for _, username := range conf.AuthorizedUsers {
+		if username == recipient {
+			params.Del("text")
+			params.Set("text", text)
+			break
+		}
+	}
 
 	_, err := http.PostForm(baseURL+"sendMessage", params)
 	if err != nil {
