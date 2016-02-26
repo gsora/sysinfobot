@@ -1,0 +1,12 @@
+{
+    "cert_path": "top",
+    "key_path": "lel",
+    "url": "url",
+    "endpoint": "endpoint",
+    "bot_token": "token",
+    "port": "8443",
+    "authorized_users": [
+        "list",
+        "yolo"
+    ]
+}
