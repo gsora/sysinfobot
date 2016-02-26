@@ -18,7 +18,7 @@ You can create "bot commands" too, but it's not strictly needed.
 
 The bot will obey to a well-defined set of commands that will be provided once it will be capable of at least work: remember, right now is **work-in-progress**!
 
-```json
+```javascript
 {
     "cert_path": "web server certificate",
     "key_path": "web server key",
