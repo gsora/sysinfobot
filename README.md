@@ -52,3 +52,5 @@ The bot will obey to a well-defined set of commands that will be provided once i
     ]
 }
 ```
+
+A note for LetsEncrypt users: please use `fullchain.pem` and `privkey.pem` files.

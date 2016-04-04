@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/gsora/sysinfobot/support"
 	"log"
 	"net/http"
 	"net/url"
 	"strconv"
+
+	"github.com/gsora/sysinfobot/support"
 )
 
 var baseURL = ""
@@ -24,7 +25,7 @@ func main() {
 	baseURL = "https://api.telegram.org/bot" + conf.BotToken + "/"
 
 	// set the webhook as the configuration file says
-	_, err = http.PostForm(baseURL+"setWebhook", url.Values{"url": {conf.URL + ":" + conf.Port + "/" + conf.Endpoint}})
+	_, err = http.PostForm(baseURL+"/setWebhook", url.Values{"url": {conf.URL + ":" + conf.Port + "/" + conf.Endpoint}})
 	if err != nil {
 		log.Fatal(err)
 	}
