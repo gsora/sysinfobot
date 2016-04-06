@@ -49,6 +49,9 @@ The bot will obey to a well-defined set of commands that will be provided once i
         "with",
         "autorized",
         "users"
+    ],
+    "custom_commands" [
+    	"test": "command"	
     ]
 }
 ```
